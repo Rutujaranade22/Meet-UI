@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google-meet</title>
+    <style>
+    </style>
+</head>
+<body>
+    <h1>students</h1>
+    <input type="text" id="search" placeholder="search" onkeyup="">
+    <div id="student-container">
+
+</div>
+
+
+    <script>
+      const students =  [
+            "rutu",
+            "gauri",
+            "sejal",
+            "chetan",
+            "jivitesh",
+            "shraddha",
+            "sarthak",
+            "shreyash"]
+            const studentsContainer = document.getElementById("student-container");
+            student.forEach((stud)=>{
+                studentsContainer.innerHTML += `div class='student-card'> ${stud}</div>`
+            } )
+
+            function loadSearchResult(){
+                const inputElement = document.getElementById('search');
+                const searchText = inputElement.value.toLoweCase( );
+                studentsContainer.innerHTML = '';
+
+                const filteredStudents = students.filter((stud)=>{
+                    if (stud.toLoweCase().includes(searchText)){
+                        return true;
+                    }
+                })
+
+            }
+    </script>
+</body>
+</html>
