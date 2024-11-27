@@ -3,45 +3,80 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Google-meet</title>
+    <title>Google Meet - Students</title>
+    <link rel="icon" type="png" href="business.png">
     <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 0;
+        }
+
+        h1 {
+            color: #600808;
+        }
+
+        #search {
+            margin-bottom: 20px;
+            padding: 10px;
+            width: 100%;
+            max-width: 400px;
+            font-size: 16px;
+        }
+
+        #student-container {
+            display: flex;
+             gap: 10px;
+        }
+
+        .student-card {
+            padding: 10px 20px;
+            background-color: #f1f1f1;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            text-align: center;
+            font-size: 14px;
+        }
     </style>
 </head>
-<body>
-    <h1>students</h1>
-    <input type="text" id="search" placeholder="search" onkeyup="">
-    <div id="student-container">
-
-</div>
-
+<body> 
+    <h1>Students-Meet</h1>
+    <input type="text" id="search" placeholder="Search..." onkeyup="loadSearchResult()">
+    <div id="student-container"></div>
 
     <script>
-      const students =  [
-            "rutu",
-            "gauri",
-            "sejal",
-            "chetan",
-            "jivitesh",
-            "shraddha",
-            "sarthak",
-            "shreyash"]
-            const studentsContainer = document.getElementById("student-container");
-            student.forEach((stud)=>{
-                studentsContainer.innerHTML += `div class='student-card'> ${stud}</div>`
-            } )
+        const students = [
+            "Rutu..👩‍🎓",
+            "Gauri 👩‍🎓",
+            "Sejal 👩‍🎓",
+            "Chetan 👨‍🎓",
+            "Jivitesh 👨‍🎓",
+            "Shraddha 👩‍🎓",
+            "Sarthak 👨‍🎓",
+            "Shreyash 👨‍🎓"
+        ];
 
-            function loadSearchResult(){
-                const inputElement = document.getElementById('search');
-                const searchText = inputElement.value.toLoweCase( );
-                studentsContainer.innerHTML = '';
+        const studentsContainer = document.getElementById("student-container");
 
-                const filteredStudents = students.filter((stud)=>{
-                    if (stud.toLoweCase().includes(searchText)){
-                        return true;
-                    }
-                })
+        function renderStudents(studentList) {
+            studentsContainer.innerHTML = ''; 
+            studentList.forEach((stud) => {
+                studentsContainer.innerHTML += `<div class="student-card">${stud}</div>`;
+            });
+        }
 
-            }
+        renderStudents(students); 
+
+        function loadSearchResult() {
+            const inputElement = document.getElementById('search');
+            const searchText = inputElement.value.toLowerCase();
+            
+            const filteredStudents = students.filter((stud) =>
+                stud.toLowerCase().includes(searchText)
+            );
+
+            renderStudents(filteredStudents); 
+        }
     </script>
 </body>
 </html>
